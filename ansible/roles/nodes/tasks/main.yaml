@@ -1,0 +1,5 @@
+# Para compartir almacenamiento entre nodos
+- name: Instalar nfs
+  apt:
+    name: [nfs-common]
+    state: present

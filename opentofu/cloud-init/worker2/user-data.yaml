@@ -1,0 +1,15 @@
+#cloud-config
+hostname: worker2
+users:
+  - name: ubuntu
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin
+    shell: /bin/bash
+    ssh-authorized-keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBqfG7cBpIa0xVj2pMlRzWS86zJd6GZxY4Q2jXx/vK22 gagomartin2006@gmail.com
+chpasswd:
+  expire: False
+  users:
+    - name: ubuntu
+      password: ubuntu
+      type: text

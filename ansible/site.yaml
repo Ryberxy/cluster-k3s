@@ -1,0 +1,24 @@
+- hosts: all
+  become: true
+  roles:
+    - commons
+
+- hosts: k3s_cluster
+  become: true
+  roles:
+    - nodes
+
+- hosts: nfs_server
+  become: true
+  roles:
+    - nfs_server
+
+- hosts: node_master
+  become: true
+  roles:
+    - k3s_master
+
+- hosts: node_workers
+  become: true
+  roles:
+    - k3s_worker

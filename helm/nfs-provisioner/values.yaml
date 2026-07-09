@@ -1,0 +1,6 @@
+# helm/nfs-provisioner/values.yaml
+nfs:
+  path: /srv/nfs/data
+
+storageClass:
+  name: nfs-csi

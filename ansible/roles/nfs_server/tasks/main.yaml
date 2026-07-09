@@ -1,0 +1,27 @@
+# roles/nfs_server/tasks/main.yml
+- name: Instalar nfs-kernel-server
+  apt:
+    name: nfs-kernel-server
+    state: present
+
+- name: Crear directorio compartido
+  file:
+    path: /srv/nfs/data
+    state: directory
+    mode: '0777'
+
+- name: Configurar exports
+  lineinfile:
+    path: /etc/exports
+    line: "/srv/nfs/data 10.147.215.0/24(rw,sync,no_subtree_check,no_root_squash)"
+    create: yes
+
+- name: Aplicar exports y arrancar NFS
+  shell: exportfs -ra
+  notify: restart nfs
+
+- name: Asegurar que nfs-server está activo
+  systemd:
+    name: nfs-server
+    enabled: true
+    state: started
