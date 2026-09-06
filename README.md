@@ -138,7 +138,7 @@ host_key_checking = False
 private_key_file = ~/.ssh/id_rsa
 ```
 
-> ⚠️ **Importante**: si tu clave SSH privada está en una ruta distinta,
+> **Importante**: si tu clave SSH privada está en una ruta distinta,
 > cambia `private_key_file` a la ruta correcta. Por ejemplo:
 > `private_key_file = ~/.ssh/id_ed25519`
 
@@ -194,7 +194,7 @@ Instala k3s en modo agente en cada worker:
 - Ejecuta el script de instalación apuntando al master
 
 #### `nodes`
-Tareas comunes de configuración de nodos.
+Tareas comunes de configuración de nodos del clúster.
 
 ---
 
@@ -295,13 +295,9 @@ kubectl get nodes
 
 Este proyecto está diseñado para ser portable. Cuando pases a un servidor dedicado:
 
+Por ejemplo Hetzner, pero podría ser cualquier otro:
+
 1. Cambia el provider en `opentofu/provider.tf` por el de Hetzner
 2. Adapta `opentofu/main.tf` con los recursos de Hetzner Cloud
 3. Los playbooks de Ansible y el Makefile se reutilizan sin cambios
 4. Considera migrar el NFS provisioner a **Longhorn** para almacenamiento distribuido nativo
-## Dependencias
-
-  - python3-venv
-  - jq
-  - opentofu
-  - ansible
